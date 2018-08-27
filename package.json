@@ -4,7 +4,7 @@
   "license": "MIT",
   "repository": "LinusU/react-native-get-random-values",
   "dependencies": {
-    "fast-base64-decode": "github:LinusU/fast-base64-decode#v1.0.0"
+    "fast-base64-decode": "^1.0.0"
   },
   "peerDependencies": {
     "react-native": ">=0.56"
