@@ -6,7 +6,6 @@ A small implementation of `getRandomValues` for React Native.
 
 ```sh
 npm install --save react-native-get-random-values
-react-native link react-native-get-random-values
 ```
 
 ## Usage
