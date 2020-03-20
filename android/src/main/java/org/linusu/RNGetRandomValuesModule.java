@@ -31,6 +31,6 @@ public class RNGetRandomValuesModule extends ReactContextBaseJavaModule {
 
     random.nextBytes(data);
 
-    return Base64.encodeToString(data, Base64.DEFAULT);
+    return Base64.encodeToString(data, Base64.NO_WRAP);
   }
 }
