@@ -35,7 +35,9 @@ function getRandomValues (array) {
   // "Calling synchronous methods on native modules is not supported in Chrome".
   // So in that specific case we fall back to just using Math.random.
   if (__DEV__) {
-    return insecureRandomValues(array)
+    if (typeof global.nativeCallSyncHook === 'undefined') {
+      return insecureRandomValues(array)
+    }
   }
 
   base64Decode(RNGetRandomValues.getRandomBase64(array.byteLength), new Uint8Array(array.buffer, array.byteOffset, array.byteLength))
