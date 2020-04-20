@@ -7,7 +7,7 @@ class QuotaExceededError extends Error {}
 let warned = false
 function insecureRandomValues (array) {
   if (!warned) {
-    console.warn('Using an insecure random number generator, this should only happen when running with a debugger without support for crypto.getRandomValues')
+    console.warn('Using an insecure random number generator, this should only happen when running in a debugger without support for crypto.getRandomValues')
     warned = true
   }
 
