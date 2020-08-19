@@ -1,13 +1,15 @@
-# `getRandomValues` for React Native
+# `crypto.getRandomValues` for React Native
 
-A small implementation of `getRandomValues` for React Native.
+A small implementation of `crypto.getRandomValues` for React Native. This is useful to polyfill for libraries like [uuid](https://www.npmjs.com/package/uuid) that depend on it.
 
 ## Installation
 
 ```sh
 npm install --save react-native-get-random-values
-cd ios && pod install && cd ..
+npx pod-install
 ```
+
+> 💡 If you use the Expo managed workflow you will see "CocoaPods is not supported in this project" - this is fine, it's not necessary.
 
 ## Usage
 
@@ -16,6 +18,14 @@ This library works as a polyfill for the global `crypto.getRandomValues`.
 ```javascript
 // Add this line to your `index.js`
 import 'react-native-get-random-values'
+```
+
+Now you can use `uuid` or other libraries that assume `crypto.getRandomValues` is available.
+
+```javascript
+import { v4 as uuid } from 'uuid'
+
+console.log(uuid())
 ```
 
 ## API
