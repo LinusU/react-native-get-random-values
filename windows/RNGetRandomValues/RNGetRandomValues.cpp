@@ -3,9 +3,9 @@
 
 namespace winrt::RNGetRandomValues::implementation
 {
-    hstring RNGetRandomValues::getRandomBase64(int byteLength)
+    std::string RNGetRandomValues::getRandomBase64(int byteLength)
     {
         winrt::Windows::Storage::Streams::IBuffer buffer = winrt::Windows::Security::Cryptography::CryptographicBuffer::GenerateRandom(byteLength);
-        return winrt::Windows::Security::Cryptography::CryptographicBuffer::EncodeToBase64String(buffer);
+        return winrt::to_string(winrt::Windows::Security::Cryptography::CryptographicBuffer::EncodeToBase64String(buffer));
     }
 }

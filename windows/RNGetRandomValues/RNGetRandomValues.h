@@ -8,6 +8,6 @@ namespace winrt::RNGetRandomValues::implementation
     struct RNGetRandomValues
     {
         REACT_METHOD(getRandomBase64)
-        hstring getRandomBase64(int byteLength);
+        std::string getRandomBase64(int byteLength);
     };
 }

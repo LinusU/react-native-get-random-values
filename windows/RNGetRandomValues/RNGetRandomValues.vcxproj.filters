@@ -22,7 +22,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="RNGetRandomValues.def" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PropertySheet.props" />
