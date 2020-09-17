@@ -83,6 +83,9 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="PropertySheet.props" />
   </ImportGroup>
+  <ImportGroup Label="ReactNativeWindowsPropertySheets">
+    <Import Project="$(ReactNativeWindowsDir)\PropertySheets\External\Microsoft.ReactNative.Uwp.CppLib.props" Condition="Exists('$(ReactNativeWindowsDir)\PropertySheets\External\Microsoft.ReactNative.Uwp.CppLib.props')" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
   <ItemDefinitionGroup>
@@ -120,35 +123,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="ReactPackageProvider.h" />
     <ClInclude Include="RNGetRandomValues.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="ReactPackageProvider.h">
+      <DependentUpon>ReactPackageProvider.idl</DependentUpon>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
-    <ClCompile Include="ReactPackageProvider.cpp" />
+    <ClCompile Include="ReactPackageProvider.cpp">
+      <DependentUpon>ReactPackageProvider.idl</DependentUpon>
+    </ClCompile>
     <ClCompile Include="RNGetRandomValues.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="RNGetRandomValues.def" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="PropertySheet.props" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="$(ReactNativeWindowsDir)\Microsoft.ReactNative\Microsoft.ReactNative.vcxproj" Condition="Exists('$(ReactNativeWindowsDir)\Microsoft.ReactNative\Microsoft.ReactNative.vcxproj')">
-      <Project>{f7d32bd0-2749-483e-9a0d-1635ef7e3136}</Project>
-      <Private>false</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="ReactPackageProvider.idl">
       <DeploymentContent>true</DeploymentContent>
     </Midl>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="RNGetRandomValues.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PropertySheet.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(ReactNativeWindowsDir)\Microsoft.ReactNative\Microsoft.ReactNative.vcxproj">
+      <Project>{f7d32bd0-2749-483e-9a0d-1635ef7e3136}</Project>
+      <Private>false</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ReactNativeWindowsTargets">
+    <Import Project="$(ReactNativeWindowsDir)\PropertySheets\External\Microsoft.ReactNative.Uwp.CppLib.targets" Condition="Exists('$(ReactNativeWindowsDir)\PropertySheets\External\Microsoft.ReactNative.Uwp.CppLib.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureReactNativeWindowsTargets" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references targets in your node_modules\react-native-windows folder. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(ReactNativeWindowsDir)\PropertySheets\External\Microsoft.ReactNative.Uwp.CppLib.props')" Text="$([System.String]::Format('$(ErrorText)', '$(ReactNativeWindowsDir)\PropertySheets\External\Microsoft.ReactNative.Uwp.CppLib.props'))" />
+    <Error Condition="!Exists('$(ReactNativeWindowsDir)\PropertySheets\External\Microsoft.ReactNative.Uwp.CppLib.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(ReactNativeWindowsDir)\PropertySheets\External\Microsoft.ReactNative.Uwp.CppLib.targets'))" />
+  </Target>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(SolutionDir)packages\Microsoft.Windows.CppWinRT.2.0.200316.3\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('$(SolutionDir)packages\Microsoft.Windows.CppWinRT.2.0.200316.3\build\native\Microsoft.Windows.CppWinRT.targets')" />

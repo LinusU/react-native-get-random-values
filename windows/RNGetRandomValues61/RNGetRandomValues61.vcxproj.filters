@@ -17,8 +17,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\RNGetRandomValues\pch.h" />
-    <ClInclude Include="..\RNGetRandomValues\RNGetRandomValues.h" />
     <ClInclude Include="..\RNGetRandomValues\ReactPackageProvider.h" />
+    <ClInclude Include="..\RNGetRandomValues\RNGetRandomValues.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\RNGetRandomValues\RNGetRandomValues.def" />

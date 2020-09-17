@@ -11,6 +11,16 @@ npx pod-install
 
 > 💡 If you use the Expo managed workflow you will see "CocoaPods is not supported in this project" - this is fine, it's not necessary.
 
+### Windows
+#### React Native 61
+RNW 61 requires manual linking of the project. To get started:
+    -   Open the project solution using Visual Studio.
+    -   Right click on the project and select 'Add Existing Item'.
+    -   Navigate and select 'windows/RNGetRandomValues61/RNGetRandomValues61.vcxproj'.
+
+#### React Native 62+
+Starting from RNW 62, we now have support for autolinking. 
+
 ## Usage
 
 This library works as a polyfill for the global `crypto.getRandomValues`.
