@@ -9,6 +9,11 @@
   "peerDependencies": {
     "react-native": ">=0.56"
   },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    }
+  },
   "keywords": [
     "Crypto.getRandomValues",
     "crypto",
