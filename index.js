@@ -1,5 +1,10 @@
 const base64Decode = require('fast-base64-decode')
-const { NativeModules } = require('react-native')
+const { NativeModules, Platform } = require('react-native')
+
+const LINKING_ERROR =
+  "The package 'react-native-get-random-values' doesn't seem to be linked. Make sure: \n\n" +
+  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
+  '- You rebuilt the app after installing the package\n'
 
 class TypeMismatchError extends Error {}
 class QuotaExceededError extends Error {}
@@ -29,7 +34,7 @@ function getRandomBase64 (byteLength) {
   } else if (NativeModules.ExpoRandom) {
     return NativeModules.ExpoRandom.getRandomBase64String(byteLength)
   } else {
-    throw new Error('Native module not found')
+    throw new Error(LINKING_ERROR)
   }
 }
 
