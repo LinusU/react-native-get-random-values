@@ -1,5 +1,5 @@
 const base64Decode = require('fast-base64-decode')
-const getRandomBase64 = require('./getRandomBase64')
+const { NativeModules } = require('react-native')
 
 class TypeMismatchError extends Error {}
 class QuotaExceededError extends Error {}
@@ -17,6 +17,20 @@ function insecureRandomValues (array) {
   }
 
   return array
+}
+
+/**
+ * @param {number} byteLength
+ * @returns {string}
+ */
+function getRandomBase64 (byteLength) {
+  if (NativeModules.RNGetRandomValues) {
+    return NativeModules.RNGetRandomValues.getRandomBase64(byteLength)
+  } else if (NativeModules.ExpoRandom) {
+    return NativeModules.ExpoRandom.getRandomBase64String(byteLength)
+  } else {
+    throw new Error('Native module not found')
+  }
 }
 
 /**

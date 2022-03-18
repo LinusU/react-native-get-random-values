@@ -5,7 +5,7 @@ A small implementation of `crypto.getRandomValues` for React Native. This is use
 ## Installation
 
 ```sh
-npm install --save react-native-get-random-values
+npm install react-native-get-random-values
 npx pod-install
 ```
 
