@@ -1,9 +1,9 @@
 #include "pch.h"
-#include "RNGetRandomValues.h"
+#include "ReactNativeGetRandomValues.h"
 
-namespace winrt::RNGetRandomValues::implementation
+namespace winrt::ReactNativeGetRandomValues
 {
-    std::string RNGetRandomValues::getRandomBase64(int byteLength)
+    std::string ReactNativeGetRandomValues::getRandomBase64(int byteLength) noexcept
     {
         winrt::Windows::Storage::Streams::IBuffer buffer = winrt::Windows::Security::Cryptography::CryptographicBuffer::GenerateRandom(byteLength);
         return winrt::to_string(winrt::Windows::Security::Cryptography::CryptographicBuffer::EncodeToBase64String(buffer));
