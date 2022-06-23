@@ -9,7 +9,7 @@ npm install react-native-get-random-values
 npx pod-install
 ```
 
-If you are using TypeScript you can install  optionally the type definitions as well.
+If you are using TypeScript you can install the type definitions as well. (optional)
 
 ```sh
 npm install @types/react-native-get-random-values --save-dev
