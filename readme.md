@@ -9,6 +9,12 @@ npm install react-native-get-random-values
 npx pod-install
 ```
 
+If you are using TypeScript you can install  optionally the type definitions as well.
+
+```sh
+npm install @types/react-native-get-random-values --save-dev
+```
+
 > 💡 If you use the Expo managed workflow you will see "CocoaPods is not supported in this project" - this is fine, it's not necessary.
 
 ## Usage
