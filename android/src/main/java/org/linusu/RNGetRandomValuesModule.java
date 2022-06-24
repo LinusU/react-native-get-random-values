@@ -1,30 +1,31 @@
 package org.linusu;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-
 import android.util.Base64;
+
+import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 public class RNGetRandomValuesModule extends ReactContextBaseJavaModule {
-
-  private final ReactApplicationContext reactContext;
+  public static final String NAME = "RNGetRandomValues";
 
   public RNGetRandomValuesModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    this.reactContext = reactContext;
   }
 
   @Override
+  @NonNull
   public String getName() {
-    return "RNGetRandomValues";
+    return NAME;
   }
 
   @ReactMethod(isBlockingSynchronousMethod = true)
+  @NonNull
   public String getRandomBase64(int byteLength) throws NoSuchAlgorithmException {
     byte[] data = new byte[byteLength];
     SecureRandom random = new SecureRandom();
