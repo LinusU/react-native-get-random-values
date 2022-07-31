@@ -6,10 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		B3E7B58A1CC2AC0600A0062D /* RNGetRandomValues.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNGetRandomValues.m */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		58B511D91A9E6C8500147676 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -24,8 +20,12 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNGetRandomValues.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNGetRandomValues.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DBE5CF32896460300C3D3E7 /* RNGetRandomValues.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RNGetRandomValues.mm; sourceTree = "<group>"; };
+		5DBE5CF42896461000C3D3E7 /* react-native-get-random-values.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "react-native-get-random-values.cpp"; path = "../cpp/react-native-get-random-values.cpp"; sourceTree = "<group>"; };
+		5DBE5CF52896461000C3D3E7 /* base64.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = base64.cpp; path = ../cpp/base64.cpp; sourceTree = "<group>"; };
+		5DBE5CF62896461000C3D3E7 /* base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = base64.h; path = ../cpp/base64.h; sourceTree = "<group>"; };
+		5DBE5CF72896461000C3D3E7 /* react-native-get-random-values.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "react-native-get-random-values.h"; path = "../cpp/react-native-get-random-values.h"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNGetRandomValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGetRandomValues.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* RNGetRandomValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGetRandomValues.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,11 @@
 			isa = PBXGroup;
 			children = (
 				B3E7B5881CC2AC0600A0062D /* RNGetRandomValues.h */,
-				B3E7B5891CC2AC0600A0062D /* RNGetRandomValues.m */,
+				5DBE5CF32896460300C3D3E7 /* RNGetRandomValues.mm */,
+				5DBE5CF52896461000C3D3E7 /* base64.cpp */,
+				5DBE5CF62896461000C3D3E7 /* base64.h */,
+				5DBE5CF42896461000C3D3E7 /* react-native-get-random-values.cpp */,
+				5DBE5CF72896461000C3D3E7 /* react-native-get-random-values.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +99,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -112,7 +117,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* RNGetRandomValues.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +208,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
+					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",

@@ -1,11 +1,17 @@
 const base64Decode = require('fast-base64-decode')
 const { NativeModules } = require('react-native')
 
-class TypeMismatchError extends Error {}
-class QuotaExceededError extends Error {}
+const { RNGetRandomValues } = NativeModules
+
+if (RNGetRandomValues && typeof RNGetRandomValues.install === 'function') {
+  RNGetRandomValues.install()
+}
+
+class TypeMismatchError extends Error { }
+class QuotaExceededError extends Error { }
 
 let warned = false
-function insecureRandomValues (array) {
+function insecureRandomValues(array) {
   if (!warned) {
     console.warn('Using an insecure random number generator, this should only happen when running in a debugger without support for crypto.getRandomValues')
     warned = true
@@ -23,9 +29,9 @@ function insecureRandomValues (array) {
  * @param {number} byteLength
  * @returns {string}
  */
-function getRandomBase64 (byteLength) {
-  if (NativeModules.RNGetRandomValues) {
-    return NativeModules.RNGetRandomValues.getRandomBase64(byteLength)
+function getRandomBase64(byteLength) {
+  if (global.RNGetRandomValues) {
+    return global.RNGetRandomValues.getRandomBase64(byteLength)
   } else if (NativeModules.ExpoRandom) {
     // Expo SDK 41-44
     return NativeModules.ExpoRandom.getRandomBase64String(byteLength)
@@ -40,7 +46,7 @@ function getRandomBase64 (byteLength) {
 /**
  * @param {Int8Array|Uint8Array|Int16Array|Uint16Array|Int32Array|Uint32Array|Uint8ClampedArray} array
  */
-function getRandomValues (array) {
+function getRandomValues(array) {
   if (!(array instanceof Int8Array || array instanceof Uint8Array || array instanceof Int16Array || array instanceof Uint16Array || array instanceof Int32Array || array instanceof Uint32Array || array instanceof Uint8ClampedArray)) {
     throw new TypeMismatchError('Expected an integer array')
   }

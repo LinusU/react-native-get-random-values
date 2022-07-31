@@ -6,6 +6,7 @@ buildscript {
         repositories {
             mavenCentral()
             google()
+            jcenter()
         }
         def buildGradleVersion = ext.has('buildGradlePluginVersion') ? ext.get('buildGradlePluginVersion') : '4.2.2'
 
@@ -30,19 +31,47 @@ android {
         targetSdkVersion safeExtGet('targetSdkVersion', 30)
         versionCode 1
         versionName "1.0"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-O2 -frtti -fexceptions -Wall -fstack-protector-all"
+                abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+            }
+        }   
     }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+    
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
     lintOptions {
         abortOnError false
+        disable 'GradleCompatible'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
     google()
     maven {
         // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
         url "$rootDir/../node_modules/react-native/android"
     }
+    jcenter()
 }
 
 dependencies {
