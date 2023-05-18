@@ -49,6 +49,13 @@ function getRandomValues (array) {
     throw new QuotaExceededError('Can only request a maximum of 65536 bytes')
   }
 
+  // Expo SDK 48+
+  if (global.expo && global.expo.modules && global.expo.modules.ExpoCrypto && global.expo.modules.ExpoCrypto.getRandomValues) {
+    // ExpoCrypto.getRandomValues doesn't return the array
+    global.expo.modules.ExpoCrypto.getRandomValues(array)
+    return array
+  }
+
   // Calling getRandomBase64 in debug mode leads to the error
   // "Calling synchronous methods on native modules is not supported in Chrome".
   // So in that specific case we fall back to just using Math.random.
