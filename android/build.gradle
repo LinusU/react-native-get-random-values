@@ -22,6 +22,10 @@ def safeExtGet(prop, fallback) {
 }
 
 android {
+    def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0].toInteger()
+    if (agpVersion >= 7) {
+      namespace 'org.linusu'
+    }
     compileSdkVersion safeExtGet('compileSdkVersion', 30)
     buildToolsVersion safeExtGet('buildToolsVersion', '30.0.3')
 
