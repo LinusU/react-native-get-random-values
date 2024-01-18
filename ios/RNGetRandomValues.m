@@ -2,10 +2,6 @@
 
 @implementation RNGetRandomValues
 
-- (dispatch_queue_t)methodQueue
-{
-    return dispatch_get_main_queue();
-}
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(NSString*, getRandomBase64:(NSUInteger)byteLength) {
