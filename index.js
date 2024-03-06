@@ -68,9 +68,9 @@ function getRandomValues (array) {
   return array
 }
 
-function isRemoteDebuggingInChrome() {
+function isRemoteDebuggingInChrome () {
   // Remote debugging in Chrome is not supported in bridgeless
-  if ("RN$Bridgeless" in global && RN$Bridgeless === true) {
+  if ('RN$Bridgeless' in global && RN$Bridgeless === true) {
     return false
   }
 
