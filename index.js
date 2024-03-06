@@ -56,18 +56,25 @@ function getRandomValues (array) {
     return array
   }
 
-  // Calling getRandomBase64 in debug mode leads to the error
+  // Calling getRandomBase64 in remote debugging mode leads to the error
   // "Calling synchronous methods on native modules is not supported in Chrome".
-  // So in that specific case we fall back to just using Math.random.
-  if (__DEV__) {
-    if (typeof global.nativeCallSyncHook === 'undefined') {
-      return insecureRandomValues(array)
-    }
+  // So in that specific case we fall back to just using Math.random().
+  if (isRemoteDebuggingInChrome()) {
+    return insecureRandomValues(array)
   }
 
   base64Decode(getRandomBase64(array.byteLength), new Uint8Array(array.buffer, array.byteOffset, array.byteLength))
 
   return array
+}
+
+function isRemoteDebuggingInChrome () {
+  // Remote debugging in Chrome is not supported in bridgeless
+  if ('RN$Bridgeless' in global && RN$Bridgeless === true) {
+    return false
+  }
+
+  return __DEV__ && typeof global.nativeCallSyncHook === 'undefined'
 }
 
 if (typeof global.crypto !== 'object') {
