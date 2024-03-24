@@ -1,6 +1,8 @@
 const base64Decode = require('fast-base64-decode')
 const { NativeModules } = require('react-native')
 
+const NativeRNGetRandomValues = require('./specs/NativeRNGetRandomValues').default
+
 class TypeMismatchError extends Error {}
 class QuotaExceededError extends Error {}
 
@@ -24,8 +26,8 @@ function insecureRandomValues (array) {
  * @returns {string}
  */
 function getRandomBase64 (byteLength) {
-  if (NativeModules.RNGetRandomValues) {
-    return NativeModules.RNGetRandomValues.getRandomBase64(byteLength)
+  if (NativeRNGetRandomValues) {
+    return NativeRNGetRandomValues.getRandomBase64(byteLength)
   } else if (NativeModules.ExpoRandom) {
     // Expo SDK 41-44
     return NativeModules.ExpoRandom.getRandomBase64String(byteLength)
