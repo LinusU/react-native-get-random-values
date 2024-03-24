@@ -7,7 +7,7 @@
     "fast-base64-decode": "^1.0.0"
   },
   "peerDependencies": {
-    "react-native": ">=0.56"
+    "react-native": ">=0.71"
   },
   "keywords": [
     "Crypto.getRandomValues",
@@ -16,5 +16,13 @@
     "getRandomValues",
     "polyfill",
     "react-native"
-  ]
+  ],
+  "codegenConfig": {
+    "name": "RNGetRandomValuesSpec",
+    "type": "modules",
+    "jsSrcsDir": "specs",
+    "android": {
+      "javaPackageName": "org.linusu"
+    }
+  }
 }
