@@ -11,6 +11,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
 public class RNGetRandomValuesModule extends ReactContextBaseJavaModule {
+  private static final SecureRandom SECURE_RANDOM = new SecureRandom();
 
   private final ReactApplicationContext reactContext;
 
@@ -27,9 +28,8 @@ public class RNGetRandomValuesModule extends ReactContextBaseJavaModule {
   @ReactMethod(isBlockingSynchronousMethod = true)
   public String getRandomBase64(int byteLength) throws NoSuchAlgorithmException {
     byte[] data = new byte[byteLength];
-    SecureRandom random = new SecureRandom();
 
-    random.nextBytes(data);
+    SECURE_RANDOM.nextBytes(data);
 
     return Base64.encodeToString(data, Base64.NO_WRAP);
   }
