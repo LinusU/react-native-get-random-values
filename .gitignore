@@ -43,4 +43,9 @@ local.properties
 buck-out/
 \.buckd/
 *.keystore
-      
+
+# Windows
+windows/.vs
+windows/packages
+windows/**/bin
+windows/**/obj
