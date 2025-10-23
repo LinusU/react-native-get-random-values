@@ -39,3 +39,22 @@ To guarantee enough performance, implementations are not using a truly random nu
 - `typedArray` - Is an integer-based TypedArray, that is an `Int8Array`, a `Uint8Array`, an `Int16Array`, a `Uint16Array`, an `Int32Array`, or a `Uint32Array`. All elements in the array are going to be overridden with random numbers.
 
 Returns the typed array that was passed in.
+
+## Development
+
+1. Node version setup
+   ```bash
+   nvm use $(cat .nvmrc)
+   node -v # -> v22.x.x
+   ```
+
+2. Install yarn
+   ```bash
+   npm install -g yarn
+   yarn -v # 3.6.1
+   ```
+
+3. Dependencies installation
+   ```bash
+   yarn install
+   ```

@@ -24,5 +24,6 @@
     "android": {
       "javaPackageName": "org.linusu"
     }
-  }
+  },
+  "packageManager": "yarn@3.6.1"
 }
