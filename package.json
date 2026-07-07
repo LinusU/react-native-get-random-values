@@ -7,7 +7,13 @@
     "fast-base64-decode": "^1.0.0"
   },
   "peerDependencies": {
-    "react-native": ">=0.81"
+    "react-native": ">=0.81",
+    "react-native-windows": "*"
+  },
+  "peerDependenciesMeta": {
+    "react-native-windows": {
+      "optional": true
+    }
   },
   "keywords": [
     "Crypto.getRandomValues",
@@ -23,6 +29,25 @@
     "jsSrcsDir": "spec",
     "android": {
       "javaPackageName": "org.linusu"
+    },
+    "windows": {
+      "namespace": "ReactNativeGetRandomValuesCodegen",
+      "outputDirectory": "windows/ReactNativeGetRandomValues/codegen",
+      "separateDataTypes": true
+    }
+  },
+  "devDependencies": {
+    "@react-native-community/cli": "^20.2.0",
+    "@types/react": "^19.2.17",
+    "react": "^19.2.7",
+    "react-native": "^0.84.1",
+    "react-native-windows": "^0.84.0"
+  },
+  "react-native-windows": {
+    "init-windows": {
+      "name": "ReactNativeGetRandomValues",
+      "namespace": "ReactNativeGetRandomValues",
+      "template": "cpp-lib"
     }
   }
 }
