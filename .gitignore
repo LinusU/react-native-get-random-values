@@ -44,3 +44,6 @@ buck-out/
 \.buckd/
 *.keystore
       
+# SwiftPM
+.swiftpm/
+.build/

@@ -24,5 +24,8 @@
     "android": {
       "javaPackageName": "org.linusu"
     }
+  },
+  "swiftpmConfig": {
+    "name": "RNGetRandomValues"
   }
 }
