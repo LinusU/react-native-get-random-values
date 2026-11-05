@@ -3,6 +3,9 @@
   "version": "2.1.0",
   "license": "MIT",
   "repository": "LinusU/react-native-get-random-values",
+  "sideEffects": [
+    "./index.js"
+  ],
   "dependencies": {
     "fast-base64-decode": "^1.0.0"
   },
